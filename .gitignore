@@ -1,0 +1,30 @@
+# Entorno virtual
+venv/
+
+# Datos (regenerables via API)
+data/raw/
+data/processed/
+
+# MLflow
+mlruns/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# IDEs
+.vscode/
+.idea/
+
+# Variables de entorno
+.env
+
+# OS
+.DS_Store
+Thumbs.db
