@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  anomaly-detector:
+    build: .
+    container_name: anomaly-detector
+    ports:
+      - "8501:8501"       # host:contenedor
+    volumes:
+      - ./data:/app/data          # Los datos persisten fuera del contenedor
+      - ./models:/app/models      # Los modelos entrenados persisten
+      - ./mlruns:/app/mlruns      # Los experimentos de MLflow persisten
+    environment:
+      - PYTHONUNBUFFERED=1        # Los logs aparecen en tiempo real
+    restart: unless-stopped       # Se reinicia automáticamente si falla

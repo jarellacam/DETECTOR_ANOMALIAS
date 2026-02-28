@@ -1,26 +1,24 @@
 # Entorno virtual
 venv/
 
-# Datos (regenerables via API)
+# Datos y modelos (se montan como volúmenes)
 data/raw/
 data/processed/
-
-# MLflow
+models/
 mlruns/
+
+# Jupyter
+notebooks/
+.ipynb_checkpoints/
 
 # Python
 __pycache__/
 *.py[cod]
-*.egg-info/
 .pytest_cache/
-.coverage
 
-# Jupyter checkpoints
-.ipynb_checkpoints/
-
-# IDEs
-.vscode/
-.idea/
+# Git
+.git/
+.gitignore
 
 # Variables de entorno
 .env
@@ -28,5 +26,3 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
-
-models/
