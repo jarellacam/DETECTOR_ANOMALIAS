@@ -11,7 +11,6 @@ license: mit
 ---
 
 # Anomaly Detector — Financial Time Series
-
 Sistema de detección de anomalías en series temporales financieras basado en un **Autoencoder LSTM** construido en PyTorch, con explicabilidad via SHAP y seguimiento de experimentos con MLflow.
 
 ## Motivación
@@ -46,12 +45,8 @@ anomaly-detector/
 │   │   ├── autoencoder.py    # Arquitectura del modelo
 │   │   └── trainer.py        # Loop de entrenamiento
 │   ├── evaluation/
-│   │   └── explainability.py # Análisis SHAP
-│   └── visualization/
-│       └── dashboard.py      # Componentes Streamlit
-├── tests/                # Tests unitarios
+│   │   └── SHAP.py # Análisis SHAP
 ├── app.py                # Punto de entrada Streamlit
-├── train.py              # Script de entrenamiento CLI
 ├── Dockerfile
 ├── docker-compose.yml
 └── requirements.txt
@@ -61,8 +56,8 @@ anomaly-detector/
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/anomaly-detector.git
-cd anomaly-detector
+git clone https://github.com/jarellacam/DETECTOR_ANOMALIAS.git
+cd DETECTOR_ANOMALIAS
 
 # Crear entorno virtual
 python -m venv venv
@@ -70,23 +65,16 @@ source venv/bin/activate  # En Windows: venv\Scripts\activate
 
 # Instalar dependencias
 pip install -r requirements.txt
-
-# Configurar variables de entorno
-cp .env.example .env
-# Editar .env con tus credenciales si usas APIs de pago
 ```
 
 ## Uso
 
 ```bash
-# Entrenar el modelo
-python train.py --ticker AAPL --start 2020-01-01 --end 2024-01-01
-
 # Lanzar el dashboard
 streamlit run app.py
 
-# Ejecutar tests
-pytest tests/
+# O con Docker
+docker-compose up -d
 ```
 
 ## Cómo funciona
@@ -95,12 +83,21 @@ pytest tests/
 2. **Preprocesamiento**: Normalización y construcción de ventanas temporales (secuencias).
 3. **Entrenamiento**: Un Autoencoder LSTM aprende a reconstruir el comportamiento *normal* del activo.
 4. **Detección**: Las observaciones con error de reconstrucción alto son candidatas a anomalía.
-5. **Explicabilidad**: SHAP identifica qué features y en qué instantes temporales contribuyeron a la anomalía.
-6. **Visualización**: Dashboard interactivo para explorar resultados.
+5. **Explicabilidad**: SHAP identifica qué features contribuyeron más a cada anomalía.
+6. **Visualización**: Dashboard interactivo para explorar resultados en cualquier activo financiero.
 
 ## Resultados
 
-*(Esta sección se completará conforme avance el proyecto)*
+Análisis sobre Apple (AAPL) 2020-2024:
+
+- **957 secuencias** analizadas sobre 4 años de datos históricos
+- **39 anomalías detectadas** (4.1%) con umbral σ=2.5
+- Las anomalías coinciden con eventos reales: crash COVID (2020), corrección 2022, volatilidad 2023
+- **Volatilidad** es la feature más determinante (60% del error SHAP), seguida de Return (25%) y MA20 (15%)
+
+## Demo
+
+[Prueba el dashboard en vivo](https://huggingface.co/spaces/jarellacam/DETECTOR_ANOMALIAS)
 
 ---
 
