@@ -11,9 +11,6 @@ license: mit
 ---
 
 # Anomaly Detector — Financial Time Series
-... resto del README ...
-
-# Anomaly Detector — Financial Time Series
 
 Sistema de detección de anomalías en series temporales financieras basado en un **Autoencoder LSTM** construido en PyTorch, con explicabilidad via SHAP y seguimiento de experimentos con MLflow.
 
