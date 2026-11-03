@@ -11,7 +11,7 @@ def calcular_caract(df: pd.DataFrame, ventana: int = 20) -> pd.DataFrame:
     Calcula las caract a partir de los datos crudos
     """
     if "Close" not in df.columns:
-        raise ValueError("El DataFrame debe tener la columna 'Close")
+        raise ValueError("El DataFrame debe tener la columna 'Close'")
     
     logger.info(f"Calculando caract con ventana={ventana}")
     resultado = pd.DataFrame(index=df.index)
@@ -31,8 +31,8 @@ def calcular_caract(df: pd.DataFrame, ventana: int = 20) -> pd.DataFrame:
     filas_despues = len(resultado)
 
     logger.info(
-        f"Características calculadas: Filas: {filas_antes} -> {filas_despues}"
-        f"(eliminadas {filas_antes} - {filas_despues} por NaN)"
+        f"Características calculadas: Filas: {filas_antes} -> {filas_despues} "
+        f"(eliminadas {filas_antes - filas_despues} por NaN)"
     )
 
     return resultado

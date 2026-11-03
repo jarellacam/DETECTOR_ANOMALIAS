@@ -1,4 +1,3 @@
-import torch
 import torch.nn as nn
 
 class CodificadorLSTM(nn.Module):
@@ -52,7 +51,7 @@ class DecodificadorLSTM(nn.Module):
 class AutoencoderLSTM(nn.Module):
     """
     Detección de anomalías en series temporales.
-    Como ha reconstruido los dstos, no sabrá replicar del todo bien las anomalías, 
+    Como ha reconstruido los datos, no sabrá replicar del todo bien las anomalías, 
     por lo que el error será alto en dichos valores.
     """
     def __init__(

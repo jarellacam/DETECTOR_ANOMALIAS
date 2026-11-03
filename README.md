@@ -54,6 +54,7 @@ DETECTOR_ANOMALIAS/
 ├── app.py                # Punto de entrada Streamlit
 ├── Dockerfile
 ├── docker-compose.yml
+├── tests/                # Tests de preprocesado y modelo (pytest)
 └── requirements.txt
 ```
 
@@ -80,6 +81,9 @@ streamlit run app.py
 
 # O con Docker
 docker-compose up -d
+
+# Ejecutar los tests
+pytest
 ```
 
 ## Cómo funciona

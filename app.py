@@ -4,25 +4,23 @@ sys.path.append(str(Path(__file__).resolve().parent))
 
 import streamlit as st
 import torch
-import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
-from src.data.ingestion import descargar_ticker, cargar_raw
+from src.data.ingestion import descargar_ticker
 from src.data.preprocessing import pipeline
 from src.models.autoencoder import AutoencoderLSTM
 from src.evaluation.SHAP import calcular_errores, detectar_anomalias, explicar_anomalias
 from src.models.trainer import Entrenador
 
-# Condifguración de la página
+# Configuración de la página
 st.set_page_config(
     page_title="Detector de anomalías financieras",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Estiloa: tema oscuro
+# Estilos: tema oscuro
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap');
