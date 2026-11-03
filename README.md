@@ -11,7 +11,10 @@ license: mit
 ---
 
 # Anomaly Detector — Financial Time Series
-Sistema de detección de anomalías en series temporales financieras basado en un **Autoencoder LSTM** construido en PyTorch, con explicabilidad via SHAP y seguimiento de experimentos con MLflow.
+
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![MLflow](https://img.shields.io/badge/MLflow-0194E2?logo=mlflow&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) [![Demo](https://img.shields.io/badge/demo-Hugging_Face-FFD21E?logo=huggingface&logoColor=black)](https://huggingface.co/spaces/jarellacam/DETECTOR_ANOMALIAS)
+
+Sistema de detección de anomalías en series temporales financieras basado en un **Autoencoder LSTM** construido en PyTorch, con explicabilidad vía SHAP y seguimiento de experimentos con MLflow.
 
 ## Motivación
 
@@ -31,7 +34,7 @@ Los modelos de detección de anomalías son críticos en finanzas para identific
 ## Estructura del proyecto
 
 ```
-anomaly-detector/
+DETECTOR_ANOMALIAS/
 ├── data/
 │   ├── raw/              # Datos originales de la API (no modificar)
 │   └── processed/        # Datos listos para entrenar
@@ -39,13 +42,15 @@ anomaly-detector/
 │   └── exploration/      # EDA y experimentos
 ├── src/
 │   ├── data/
-│   │   ├── ingestion.py      # Descarga de datos via API
+│   │   ├── ingestion.py      # Descarga de datos vía API
 │   │   └── preprocessing.py  # Limpieza y preparación de secuencias
 │   ├── models/
 │   │   ├── autoencoder.py    # Arquitectura del modelo
 │   │   └── trainer.py        # Loop de entrenamiento
 │   ├── evaluation/
-│   │   └── SHAP.py # Análisis SHAP
+│   │   └── SHAP.py           # Análisis SHAP
+│   └── visualization/
+│       └── dashboard.py      # Gráficas del dashboard
 ├── app.py                # Punto de entrada Streamlit
 ├── Dockerfile
 ├── docker-compose.yml
@@ -88,7 +93,7 @@ docker-compose up -d
 
 ## Resultados
 
-Análisis sobre Apple (AAPL) 2020-2024:
+Análisis sobre Apple (AAPL) 2020–2024:
 
 - **957 secuencias** analizadas sobre 4 años de datos históricos
 - **39 anomalías detectadas** (4.1%) con umbral σ=2.5
@@ -101,4 +106,4 @@ Análisis sobre Apple (AAPL) 2020-2024:
 
 ---
 
-Proyecto desarrollado como parte del portfolio de Juan Arellano — Data Science & MLOps.
+**Autor:** Juan Arellano Cameo · [LinkedIn](https://www.linkedin.com/in/juann-arellano) · [GitHub](https://github.com/jarellacam)
